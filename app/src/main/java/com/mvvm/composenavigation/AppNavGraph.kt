@@ -19,7 +19,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.mvvm.composenavigation.feature.reminder.presentation.ReminderScreen
+import com.mvvm.composenavigation.feature.task.list.ReminderListScreen
 import com.mvvm.composenavigation.feature.task.list.TaskListScreen
+import com.mvvm.composenavigation.navigation.ReminderListRoute
+import com.mvvm.composenavigation.navigation.ReminderScreenRoute
 import com.mvvm.composenavigation.navigation.Route
 import com.mvvm.composenavigation.navigation.TaskListRoute
 import kotlinx.coroutines.launch
@@ -71,6 +75,7 @@ fun AppNavGraph(
                     },
                     selected = false,
                     onClick = {
+                        navController.navigate(ReminderListRoute)
                         //Close drawer
                         coroutineScope.launch { drawerState.close() }
                     }
@@ -98,9 +103,36 @@ fun AppNavGraph(
                     }
                 )
             }
-            /*composable<CreateListRoute> {
-                CreateListScreen()
-            }*/
+
+            composable<ReminderListRoute> {
+                ReminderListScreen(
+                    openDrawer = {
+                        coroutineScope.launch {
+                            drawerState.apply {
+                                if (isClosed) open() else close()
+                            }
+                        }
+                    } ,
+                    onAddTask = {
+                        navController.navigate(ReminderScreenRoute)
+                    }
+                )
+            }
+
+            composable<ReminderScreenRoute> {
+                ReminderScreen(
+                    openDrawer = {
+                        coroutineScope.launch {
+                            drawerState.apply {
+                                if (isClosed) open() else close()
+                            }
+                        }
+                    } ,
+                    onAddTask = {
+                        navController.navigate(ReminderListRoute)
+                    }
+                )
+            }
         }
     }
 
