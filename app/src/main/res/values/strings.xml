@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">ComposeNavigation</string>
     <string name="task_title">Tareas</string>
+    <string name="notes_title">Notas</string>
     <string name="menu_helper_description">Botón menu</string>
     <string name="create_task_helper_description">Botón nueva tarea</string>
+    <string name="create_notes_helper_description">Botón nueva tarea</string>
+    <string name="network_message">No Internet connection</string>
+    <string name="unexpected_message">Ops algo salio mal, intentelo en unos minutos.</string>
+    <string name ="create_note_success_message">Se ha guardado satisfactoriamente la nota :D</string>
+
 </resources>

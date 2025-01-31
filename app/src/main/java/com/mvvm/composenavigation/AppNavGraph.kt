@@ -20,14 +20,19 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.mvvm.composenavigation.feature.task.list.TaskListScreen
+import com.mvvm.composenavigation.feature.notes.list.NotesListScreen
+import com.mvvm.composenavigation.feature.notes.create.presentation.CreateNotesScreen
+import com.mvvm.composenavigation.navigation.CreateNoteRoute
 import com.mvvm.composenavigation.navigation.Route
 import com.mvvm.composenavigation.navigation.TaskListRoute
+import com.mvvm.composenavigation.navigation.NoteListRoute
 import kotlinx.coroutines.launch
 
 @Composable
 fun AppNavGraph(
     modifier: Modifier = Modifier,
     startDestination: Route = TaskListRoute,
+    notesDestination: Route = NoteListRoute
 ) {
     val navController: NavHostController = rememberNavController()
     val currentNavBackStackEntry by navController.currentBackStackEntryAsState()
@@ -57,10 +62,12 @@ fun AppNavGraph(
                 )
                 NavigationDrawerItem(
                     label = {
-                        Text(text = "Notes")
+                        Text(text = stringResource(R.string.notes_title))
                     },
-                    selected = false,
+                    selected = currentRoute == NoteListRoute::class.qualifiedName,
                     onClick = {
+                        //navigate
+                        navController.navigate(NoteListRoute)
                         //Close drawer
                         coroutineScope.launch { drawerState.close() }
                     }
@@ -98,9 +105,25 @@ fun AppNavGraph(
                     }
                 )
             }
-            /*composable<CreateListRoute> {
-                CreateListScreen()
-            }*/
+            composable<NoteListRoute> {
+                NotesListScreen(
+                    openDrawer = {
+                        coroutineScope.launch {
+                            drawerState.apply {
+                                if (isClosed) open() else close()
+                            }
+                        }
+                    },
+                    onAddNotes = {
+                        println("Has presionado el botón")
+                        navController.navigate(CreateNoteRoute)
+                    }
+                )
+            }
+
+            composable<CreateNoteRoute> {
+                CreateNotesScreen()
+            }
         }
     }
 
