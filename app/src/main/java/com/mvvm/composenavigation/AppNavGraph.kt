@@ -115,14 +115,17 @@ fun AppNavGraph(
                         }
                     },
                     onAddNotes = {
-                        println("Has presionado el botón")
                         navController.navigate(CreateNoteRoute)
                     }
                 )
             }
 
             composable<CreateNoteRoute> {
-                CreateNotesScreen()
+                CreateNotesScreen(
+                    onBack =  {
+                        navController.navigateUp()
+                    }
+                )
             }
         }
     }

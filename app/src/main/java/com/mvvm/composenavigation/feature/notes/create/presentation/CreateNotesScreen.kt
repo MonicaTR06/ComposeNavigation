@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Button
@@ -43,8 +44,7 @@ import com.mvvm.composenavigation.R
 fun CreateNotesScreen(
     //AQUI DEBE SER BACK PARA EL CREATENOTE EN VEZ DEL OPEN DRAWER
     viewModel: NotesViewModel = viewModel(factory = NotesViewModel.Factory),
-    openDrawer: () -> Unit,
-    onAddNotes: () -> Unit
+    onBack: () -> Unit
 ) {
     Scaffold(
 
@@ -54,9 +54,9 @@ fun CreateNotesScreen(
                     Text(text = stringResource(R.string.notes_title))
                 },
                 navigationIcon = {
-                    IconButton(onClick = openDrawer) {
+                    IconButton(onClick = onBack) {
                         Icon(
-                            Icons.Filled.KeyboardArrowUp,//AQUI IRIA BOTON DE BACK
+                            Icons.Filled.ArrowBack,//AQUI IRIA BOTON DE BACK
                             contentDescription = stringResource(R.string.menu_helper_description)
                         )
                     }
@@ -82,6 +82,7 @@ fun CreateNotesScreen(
         Box(
             Modifier
                 .fillMaxSize()
+                .padding(contentPadding)
                 .padding(16.dp)
         ) {
             Notes(
