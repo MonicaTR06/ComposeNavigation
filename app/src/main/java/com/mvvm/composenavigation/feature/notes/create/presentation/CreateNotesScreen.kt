@@ -8,10 +8,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -25,41 +35,67 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bcp.bank.bcp.mvvm.feature.notes.presentation.NotesUiAction
+import com.mvvm.composenavigation.R
 
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CreateNotesScreen(
-    viewModel: NotesViewModel = viewModel(factory = NotesViewModel.Factory)
+    //AQUI DEBE SER BACK PARA EL CREATENOTE EN VEZ DEL OPEN DRAWER
+    viewModel: NotesViewModel = viewModel(factory = NotesViewModel.Factory),
+    openDrawer: () -> Unit,
+    onAddNotes: () -> Unit
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val context = LocalContext.current
+    Scaffold(
 
-    if (uiState.succesMessageRes != null){
-        Toast.makeText(context, stringResource(uiState.succesMessageRes!!), Toast.LENGTH_LONG).show()
-        viewModel.successMessageShown()
-    }
-    if(uiState.errorMessage != null || uiState.errorMessageRes != null){
-        val message = uiState.errorMessage ?: uiState.errorMessageRes?.let { stringResource(it) }
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-        viewModel.errorMessageShown()
-    }
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = stringResource(R.string.notes_title))
+                },
+                navigationIcon = {
+                    IconButton(onClick = openDrawer) {
+                        Icon(
+                            Icons.Filled.KeyboardArrowUp,//AQUI IRIA BOTON DE BACK
+                            contentDescription = stringResource(R.string.menu_helper_description)
+                        )
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+    ) { contentPadding ->
+        //AQUI VA EL CONTENIDO DE LA PAGINA
+        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+        val context = LocalContext.current
 
-    Box(
-        Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Notes(
-            modifier = Modifier.align(Alignment.Center),
-            onUiAction = {
-                viewModel.onUiAction(it)
-            },
-            title = uiState.title,
-            description = uiState.description,
-            isFavorite = uiState.isFavorite
-        )
+        if (uiState.succesMessageRes != null){
+            Toast.makeText(context, stringResource(uiState.succesMessageRes!!), Toast.LENGTH_LONG).show()
+            viewModel.successMessageShown()
+        }
+        if(uiState.errorMessage != null || uiState.errorMessageRes != null){
+            val message = uiState.errorMessage ?: uiState.errorMessageRes?.let { stringResource(it) }
+            Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+            viewModel.errorMessageShown()
+        }
+
+        Box(
+            Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+        ) {
+            Notes(
+                modifier = Modifier.align(Alignment.Center),
+                onUiAction = {
+                    viewModel.onUiAction(it)
+                },
+                title = uiState.title,
+                description = uiState.description,
+                isFavorite = uiState.isFavorite
+            )
+        }
     }
 }
-
 @Composable
 fun Notes(modifier: Modifier, onUiAction: (NotesUiAction) -> Unit, title: String, description: String, isFavorite: Boolean) {
     Column(modifier = modifier) {
