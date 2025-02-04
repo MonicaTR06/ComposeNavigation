@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="product_title">Producto: %1$s</string>
+    <string name="title_hint">Titulo</string>
+    <string name="description_hint">Descripción</string>
+    <string name="save_product">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="create_product_title">Nuevo Producto</string>
+    <string name="login_title">Hola,\nBienvenido a Task\'s Manager</string>
+    <string name="user_hint">Usuario</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="login_button">Entrar</string>
+    <string name="network_message">No Internet connection</string>
+    <string name="unexpected_message">Ops algo salio mal, intentelo en unos minutos.</string>
+</resources>

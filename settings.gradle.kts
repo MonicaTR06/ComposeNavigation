@@ -19,6 +19,13 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "ComposeNavigation"
 include(":app")
- 
+
+include(":core:network")
+include(":core:navigation")
+
+include(":feature:login")
+include(":core:ui")

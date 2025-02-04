@@ -1,4 +1,4 @@
-package com.mvvm.composenavigation.ui.theme
+package com.demo.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
