@@ -33,8 +33,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -94,6 +97,9 @@ internal fun AddTaskScreen(
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(R.string.title_work),
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Cursive,
+                color = Color.Blue,
                 style = MaterialTheme.typography.headlineLarge
             )
 
@@ -167,7 +173,7 @@ fun SwitchMinimalExample(onUiAction: (TaskUiAction) -> Unit, checked: Boolean) {
     Row(
         modifier = Modifier.padding(top = 20.dp)
     ) {
-        Text("Abierto / Cerrado")
+        Text(text = stringResource(R.string.open_close))
         Switch(
             checked = checked,
             onCheckedChange = {
@@ -182,7 +188,7 @@ fun SwitchMinimalExample(onUiAction: (TaskUiAction) -> Unit, checked: Boolean) {
 fun PriorityDropdownMenu(onUiAction: (TaskUiAction) -> Unit, selectedText: String) {
     val priority = arrayOf("HIGH", "LOW")
     var expanded by remember { mutableStateOf(false) }
-
+    //si es val, genera error en la línea 200
     Box(
         modifier = Modifier
             .fillMaxWidth()

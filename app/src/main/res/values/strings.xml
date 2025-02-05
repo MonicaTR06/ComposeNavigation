@@ -13,4 +13,5 @@
     <string name="priority_now">Ingrese la prioridad: low or high</string>
     <string name="saved_task">Tarea guardada</string>
     <string name="clean_screen_Task">Cancelar</string>
+    <string name="open_close"> Abierto / Cerrado </string>
 </resources>
