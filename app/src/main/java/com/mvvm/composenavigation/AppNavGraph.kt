@@ -20,6 +20,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.mvvm.composenavigation.feature.task.list.TaskListScreen
+import com.mvvm.composenavigation.feature.task.presentation.AddTaskScreen
+import com.mvvm.composenavigation.navigation.AddTaskRoute
 import com.mvvm.composenavigation.navigation.Route
 import com.mvvm.composenavigation.navigation.TaskListRoute
 import kotlinx.coroutines.launch
@@ -94,13 +96,13 @@ fun AppNavGraph(
                         }
                     },
                     onAddTask = {
-                        //navController.navigate(CreateListRoute)
+                        navController.navigate(AddTaskRoute)
                     }
                 )
             }
-            /*composable<CreateListRoute> {
-                CreateListScreen()
-            }*/
+            composable<AddTaskRoute> {
+                AddTaskScreen()
+            }
         }
     }
 

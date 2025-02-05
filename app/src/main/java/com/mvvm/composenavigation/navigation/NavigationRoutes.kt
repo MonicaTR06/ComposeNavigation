@@ -10,3 +10,6 @@ data object NoteListRoute : Route
 
 @Serializable
 data object TaskListRoute : Route
+
+@Serializable
+data object AddTaskRoute : Route
