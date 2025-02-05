@@ -35,6 +35,9 @@ class ReminderViewModel (
             is ReminderUiAction.OnIsReminderOpenChanged -> {
                 updateIsReminderOpen(uiAction.isReminderOpen)
             }
+            is ReminderUiAction.SaveReminder -> {
+                saveReminder()
+            }
         }
     }
 

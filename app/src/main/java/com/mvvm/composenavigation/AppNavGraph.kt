@@ -121,16 +121,7 @@ fun AppNavGraph(
 
             composable<ReminderScreenRoute> {
                 ReminderScreen(
-                    openDrawer = {
-                        coroutineScope.launch {
-                            drawerState.apply {
-                                if (isClosed) open() else close()
-                            }
-                        }
-                    } ,
-                    onAddTask = {
-                        navController.navigate(ReminderListRoute)
-                    }
+
                 )
             }
         }
