@@ -24,6 +24,8 @@ import com.mvvm.composenavigation.feature.task.list.ReminderListScreen
 import com.mvvm.composenavigation.feature.task.list.TaskListScreen
 import com.mvvm.composenavigation.navigation.ReminderListRoute
 import com.mvvm.composenavigation.navigation.ReminderScreenRoute
+import com.mvvm.composenavigation.feature.task.presentation.AddTaskScreen
+import com.mvvm.composenavigation.navigation.AddTaskRoute
 import com.mvvm.composenavigation.navigation.Route
 import com.mvvm.composenavigation.navigation.TaskListRoute
 import kotlinx.coroutines.launch
@@ -99,7 +101,7 @@ fun AppNavGraph(
                         }
                     },
                     onAddTask = {
-                        //navController.navigate(CreateListRoute)
+                        navController.navigate(AddTaskRoute)
                     }
                 )
             }
@@ -123,6 +125,9 @@ fun AppNavGraph(
                 ReminderScreen(
 
                 )
+            }
+            composable<AddTaskRoute> {
+                AddTaskScreen()
             }
         }
     }

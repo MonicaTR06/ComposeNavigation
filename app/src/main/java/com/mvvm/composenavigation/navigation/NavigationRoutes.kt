@@ -13,3 +13,7 @@ data object TaskListRoute : Route
 
 @Serializable
 data object ReminderScreenRoute : Route
+
+
+@Serializable
+data object AddTaskRoute : Route
