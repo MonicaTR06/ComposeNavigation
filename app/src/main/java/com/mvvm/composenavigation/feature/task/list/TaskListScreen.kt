@@ -1,6 +1,5 @@
 package com.mvvm.composenavigation.feature.task.list
 
-
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -37,7 +36,6 @@ fun TaskListScreen(
                             Icons.Filled.Menu,
                             contentDescription = stringResource(R.string.menu_helper_description)
                         )
-
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
