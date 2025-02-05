@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">ComposeNavigation</string>
     <string name="task_title">Tareas</string>
+    <string name="reminder_title">Reminder</string>
     <string name="menu_helper_description">Botón menu</string>
     <string name="create_task_helper_description">Botón nueva tarea</string>
+    <string name="create_reminder_helper_description">Botón nuevo reminder</string>
     <string name="save">Guardar</string>
     <string name="network_message">No Internet connection</string>
     <string name="unexpected_message">Ops algo salio mal, intentelo en unos minutos.</string>
@@ -14,4 +16,8 @@
     <string name="saved_task">Tarea guardada</string>
     <string name="clean_screen_Task">Cancelar</string>
     <string name="open_close"> Abierto / Cerrado </string>
+    <string name="message">Message</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="reminder_list">Listado de reminder</string>
+    <string name="reminder_open">Is Reminder Open</string>
 </resources>
