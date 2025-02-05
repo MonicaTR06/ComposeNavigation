@@ -19,7 +19,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.mvvm.composenavigation.feature.reminder.presentation.ReminderScreen
+import com.mvvm.composenavigation.feature.task.list.ReminderListScreen
 import com.mvvm.composenavigation.feature.task.list.TaskListScreen
+import com.mvvm.composenavigation.navigation.ReminderListRoute
+import com.mvvm.composenavigation.navigation.ReminderScreenRoute
+import com.mvvm.composenavigation.feature.task.presentation.AddTaskScreen
+import com.mvvm.composenavigation.navigation.AddTaskRoute
 import com.mvvm.composenavigation.feature.notes.list.presentation.NotesListScreen
 import com.mvvm.composenavigation.feature.notes.create.presentation.CreateNotesScreen
 import com.mvvm.composenavigation.navigation.CreateNoteRoute
@@ -77,6 +83,7 @@ fun AppNavGraph(
                     },
                     selected = false,
                     onClick = {
+                        navController.navigate(ReminderListRoute)
                         //Close drawer
                         coroutineScope.launch { drawerState.close() }
                     }
@@ -100,9 +107,33 @@ fun AppNavGraph(
                         }
                     },
                     onAddTask = {
-                        //navController.navigate(CreateListRoute)
+                        navController.navigate(AddTaskRoute)
                     }
                 )
+            }
+
+            composable<ReminderListRoute> {
+                ReminderListScreen(
+                    openDrawer = {
+                        coroutineScope.launch {
+                            drawerState.apply {
+                                if (isClosed) open() else close()
+                            }
+                        }
+                    } ,
+                    onAddTask = {
+                        navController.navigate(ReminderScreenRoute)
+                    }
+                )
+            }
+
+            composable<ReminderScreenRoute> {
+                ReminderScreen(
+
+                )
+            }
+            composable<AddTaskRoute> {
+                AddTaskScreen()
             }
             composable<NoteListRoute> {
                 NotesListScreen(

@@ -1,6 +1,5 @@
 package com.mvvm.composenavigation.feature.task.list
 
-
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -21,7 +20,7 @@ import com.mvvm.composenavigation.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TaskListScreen(
+fun ReminderListScreen(
     openDrawer: () -> Unit,
     onAddTask: () -> Unit
 ) {
@@ -29,7 +28,7 @@ fun TaskListScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = stringResource(R.string.task_title))
+                    Text(text = stringResource(R.string.reminder_title))
                 },
                 navigationIcon = {
                     IconButton(onClick = openDrawer) {
@@ -37,7 +36,6 @@ fun TaskListScreen(
                             Icons.Filled.Menu,
                             contentDescription = stringResource(R.string.menu_helper_description)
                         )
-
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
@@ -49,13 +47,13 @@ fun TaskListScreen(
             ) {
                 Icon(
                     Icons.Filled.Add,
-                    contentDescription = stringResource(R.string.create_task_helper_description)
+                    contentDescription = stringResource(R.string.create_reminder_helper_description)
                 )
             }
         }
     ) { contentPadding ->
         Box(modifier = Modifier.padding(contentPadding)) {
-            Text(text = "Listado de tareas")
+            Text(text = "Listado de reminder")
         }
     }
 }
