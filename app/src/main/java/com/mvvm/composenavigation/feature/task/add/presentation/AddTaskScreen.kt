@@ -43,6 +43,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mvvm.composenavigation.R
+import com.mvvm.composenavigation.feature.task.add.presentation.TaskConstants
+import com.mvvm.composenavigation.feature.task.add.presentation.TaskConstants.HIGHT
+import com.mvvm.composenavigation.feature.task.add.presentation.TaskConstants.LOW
 import com.mvvm.composenavigation.navigation.AddTaskRoute
 
 @Preview
@@ -121,7 +124,6 @@ internal fun AddTaskScreen(
             PriorityDropdownMenu(onUiAction,priority)
             SwitchMinimalExample(onUiAction,isTaskOpen)
 
-
             Button(
                 modifier = Modifier
                     .padding(top = 16.dp)
@@ -186,9 +188,9 @@ fun SwitchMinimalExample(onUiAction: (TaskUiAction) -> Unit, checked: Boolean) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PriorityDropdownMenu(onUiAction: (TaskUiAction) -> Unit, selectedText: String) {
-    val priority = arrayOf("HIGH", "LOW")
+    val priority = arrayOf(HIGHT,LOW)
     var expanded by remember { mutableStateOf(false) }
-    //si es val, genera error en la línea 200
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
