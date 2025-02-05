@@ -44,6 +44,5 @@ class NotesDataSource (
         }
     }.flowOn(Dispatchers.IO)
 
-    companion object
 
 }

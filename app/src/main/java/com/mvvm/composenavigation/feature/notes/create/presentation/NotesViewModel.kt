@@ -31,10 +31,6 @@ class NotesViewModel (
     val uiState = _uiState.asStateFlow()
 
     fun saveNote() {
-        println("Título: ${_uiState.value.title}")
-        println("Descripción: ${_uiState.value.description}")
-        println("Es favorito: ${_uiState.value.isFavorite}")
-
         createNote(_uiState.value.title, _uiState.value.description, _uiState.value.isFavorite)
     }
 
@@ -66,7 +62,7 @@ class NotesViewModel (
                    ServiceResult.Loading -> {
                     _uiState.update {
                         it.copy(
-                           // isLoading = true
+                            isLoading = true
                         )
                     }
                 }
@@ -86,7 +82,7 @@ class NotesViewModel (
         _uiState.update {
             it.copy(
                 errorMessageRes = stringRes
-                //,isLoading = false
+                ,isLoading = false
             )
         }
     }
@@ -95,7 +91,7 @@ class NotesViewModel (
         _uiState.update {
             it.copy(
                 errorMessage = stringRes
-               //, isLoading = false
+               , isLoading = false
             )
         }
     }

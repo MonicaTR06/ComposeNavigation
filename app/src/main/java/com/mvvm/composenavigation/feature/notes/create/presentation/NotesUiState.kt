@@ -6,6 +6,7 @@ data class NotesUiState(
     val isFavorite : Boolean = false,
     val title : String = "",
     val description : String = "",
+    val isLoading : Boolean = false,
 
     @StringRes
     val errorMessageRes: Int? = null,

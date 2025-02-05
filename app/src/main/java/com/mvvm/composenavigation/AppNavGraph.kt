@@ -20,7 +20,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.mvvm.composenavigation.feature.task.list.TaskListScreen
-import com.mvvm.composenavigation.feature.notes.list.NotesListScreen
+import com.mvvm.composenavigation.feature.notes.list.presentation.NotesListScreen
 import com.mvvm.composenavigation.feature.notes.create.presentation.CreateNotesScreen
 import com.mvvm.composenavigation.navigation.CreateNoteRoute
 import com.mvvm.composenavigation.navigation.Route
@@ -31,8 +31,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun AppNavGraph(
     modifier: Modifier = Modifier,
-    startDestination: Route = TaskListRoute,
-    notesDestination: Route = NoteListRoute
+    startDestination: Route = TaskListRoute
 ) {
     val navController: NavHostController = rememberNavController()
     val currentNavBackStackEntry by navController.currentBackStackEntryAsState()

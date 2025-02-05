@@ -1,4 +1,4 @@
-package com.mvvm.composenavigation.feature.notes.list
+package com.mvvm.composenavigation.feature.notes.list.presentation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,7 +21,6 @@ import com.mvvm.composenavigation.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NotesListScreen(
-    //AQUI DEBE SER BACK PARA EL CREATENOTE EN VEZ DEL OPEN DRAWER
     openDrawer: () -> Unit,
     onAddNotes: () -> Unit
 ) {
@@ -35,7 +34,7 @@ fun NotesListScreen(
                 navigationIcon = {
                     IconButton(onClick = openDrawer) {
                         Icon(
-                            Icons.Filled.Menu,//AQUI IRIA BOTON DE BACK
+                            Icons.Filled.Menu,
                             contentDescription = stringResource(R.string.menu_helper_description)
                         )
                     }
@@ -54,9 +53,8 @@ fun NotesListScreen(
             }
         }
     ) { contentPadding ->
-        //AQUI VA EL CONTENIDO DE LA PAGINA
         Box(modifier = Modifier.padding(contentPadding)) {
-            Text(text = "Listado de Notas")
+            Text(text = stringResource(R.string.notes_list_description))
         }
     }
 }

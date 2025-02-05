@@ -42,7 +42,6 @@ import com.mvvm.composenavigation.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CreateNotesScreen(
-    //AQUI DEBE SER BACK PARA EL CREATENOTE EN VEZ DEL OPEN DRAWER
     viewModel: NotesViewModel = viewModel(factory = NotesViewModel.Factory),
     onBack: () -> Unit
 ) {
@@ -56,7 +55,7 @@ fun CreateNotesScreen(
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
-                            Icons.Filled.ArrowBack,//AQUI IRIA BOTON DE BACK
+                            Icons.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.menu_helper_description)
                         )
                     }
@@ -65,7 +64,6 @@ fun CreateNotesScreen(
             )
         }
     ) { contentPadding ->
-        //AQUI VA EL CONTENIDO DE LA PAGINA
         val uiState by viewModel.uiState.collectAsStateWithLifecycle()
         val context = LocalContext.current
 
@@ -98,10 +96,10 @@ fun CreateNotesScreen(
     }
 }
 @Composable
-fun Notes(modifier: Modifier, onUiAction: (NotesUiAction) -> Unit, title: String, description: String, isFavorite: Boolean) {
+internal fun Notes(modifier: Modifier, onUiAction: (NotesUiAction) -> Unit, title: String, description: String, isFavorite: Boolean) {
     Column(modifier = modifier) {
         Text(
-            text = "¿Que notas escribiremos hoy?",
+            text = stringResource(R.string.notes_description),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier

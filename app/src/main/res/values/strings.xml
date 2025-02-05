@@ -7,6 +7,8 @@
     <string name="create_notes_helper_description">Botón nueva tarea</string>
     <string name="network_message">No Internet connection</string>
     <string name="unexpected_message">Ops algo salio mal, intentelo en unos minutos.</string>
-    <string name ="create_note_success_message">Se ha guardado satisfactoriamente la nota :D</string>
+    <string name ="create_note_success_message">Se ha guardado satisfactoriamente la nota.</string>
+    <string name ="notes_description">¿Que notas escribiremos hoy? </string>
+    <string name ="notes_list_description">Listado de Notas</string>
 
 </resources>
