@@ -21,7 +21,11 @@ import com.mvvm.composenavigation.navigation.AddTaskRoute
 import com.mvvm.composenavigation.navigation.LoginRoute
 import com.mvvm.composenavigation.navigation.ReminderListRoute
 import com.mvvm.composenavigation.navigation.ReminderScreenRoute
+import com.mvvm.composenavigation.feature.notes.list.presentation.NotesListScreen
+import com.mvvm.composenavigation.feature.notes.create.presentation.CreateNotesScreen
+import com.mvvm.composenavigation.navigation.CreateNoteRoute
 import com.mvvm.composenavigation.navigation.TaskListRoute
+import com.mvvm.composenavigation.navigation.NoteListRoute
 import kotlinx.coroutines.launch
 
 @Composable
@@ -42,6 +46,7 @@ fun AppNavGraph(
         startDestination = startDestination,
         modifier = modifier
     ) {
+
         composable<TaskListRoute> {
             ScreenWithDrawer(drawerState, currentRoute, navController::navigate) {
                 TaskListScreen(
@@ -51,12 +56,14 @@ fun AppNavGraph(
                         }
                     },
                     onAddTask = {
-                       navController.navigate(AddTaskRoute)
+                        navController.navigate(AddTaskRoute)
                     }
                 )
             }
+        }
 
-            composable<ReminderListRoute> {
+        composable<ReminderListRoute> {
+            ScreenWithDrawer(drawerState, currentRoute, navController::navigate) {
                 ReminderListScreen(
                     openDrawer = {
                         coroutineScope.launch {
@@ -64,33 +71,59 @@ fun AppNavGraph(
                                 if (isClosed) open() else close()
                             }
                         }
-                    } ,
+                    },
                     onAddTask = {
                         navController.navigate(ReminderScreenRoute)
                     }
                 )
             }
+        }
 
-            composable<ReminderScreenRoute> {
-                ReminderScreen()
-            }
+        composable<ReminderScreenRoute> {
+            ReminderScreen(
 
-            composable<AddTaskRoute> {
-                AddTaskScreen()
-            }
+            )
+        }
 
-            composable<LoginRoute> {
-                ScreenWithDrawer(drawerState, currentRoute, navController::navigate) {
-                    LoginScreen(
-                        onSuccessLogin = {
-                            navController.navigate(TaskListRoute) {
-                                popUpTo<LoginRoute> { inclusive = true }
+        composable<AddTaskRoute> {
+            AddTaskScreen()
+        }
+
+        composable<LoginRoute> {
+            LoginScreen(
+                onSuccessLogin = {
+                    navController.navigate(TaskListRoute) {
+                        popUpTo<LoginRoute> { inclusive = true }
+                    }
+                }
+            )
+        }
+
+        composable<NoteListRoute> {
+            ScreenWithDrawer(drawerState, currentRoute, navController::navigate) {
+                NotesListScreen(
+                    openDrawer = {
+                        coroutineScope.launch {
+                            drawerState.apply {
+                                if (isClosed) open() else close()
                             }
                         }
-                    )
-                }
+                    },
+                    onAddNotes = {
+                        navController.navigate(CreateNoteRoute)
+                    }
+                )
             }
         }
+
+        composable<CreateNoteRoute> {
+            CreateNotesScreen(
+                onBack = {
+                    navController.navigateUp()
+                }
+            )
+        }
+
     }
 
 }

@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.demo.navigation.Route
+import com.mvvm.composenavigation.navigation.NoteListRoute
 import com.mvvm.composenavigation.navigation.ReminderListRoute
 import com.mvvm.composenavigation.navigation.TaskListRoute
 import kotlinx.coroutines.launch
@@ -34,9 +35,7 @@ fun ScreenWithDrawer(
                 ModalDrawerHeader()
 
                 NavigationDrawerItem(
-                    label = {
-                        Text(text = stringResource(R.string.task_title))
-                    },
+                    label = { Text(text = stringResource(R.string.task_title)) },
                     selected = currentRoute == TaskListRoute::class.qualifiedName,
                     onClick = {
                         navigateTo(TaskListRoute)
@@ -46,17 +45,16 @@ fun ScreenWithDrawer(
                 )
                 NavigationDrawerItem(
                     label = { Text(text = "Notes") },
-                    selected = false,
+                    selected = currentRoute == NoteListRoute::class.qualifiedName,
                     onClick = {
+                        navigateTo(NoteListRoute)
                         //Close drawer
                         coroutineScope.launch { drawerState.close() }
                     }
                 )
                 NavigationDrawerItem(
-                    label = {
-                        Text(text = "Reminder")
-                    },
-                    selected = false,
+                    label = { Text(text = "Reminder") },
+                    selected = currentRoute == ReminderListRoute::class.qualifiedName,
                     onClick = {
                         navigateTo(ReminderListRoute)
                         //Close drawer
@@ -72,7 +70,7 @@ fun ScreenWithDrawer(
 }
 
 @Composable
-internal fun ModalDrawerHeader(){
+internal fun ModalDrawerHeader() {
     Text("Compose App", modifier = Modifier.padding(16.dp))
 
     HorizontalDivider()

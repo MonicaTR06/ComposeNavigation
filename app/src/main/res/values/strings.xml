@@ -20,4 +20,11 @@
     <string name="date_and_time">Date and Time</string>
     <string name="reminder_list">Listado de reminder</string>
     <string name="reminder_open">Is Reminder Open</string>
+    <!--ADD NOTES-->
+    <string name="notes_title">Notas</string>
+    <string name="create_notes_helper_description">Botón nueva tarea</string>
+    <string name ="create_note_success_message">Se ha guardado satisfactoriamente la nota.</string>
+    <string name ="notes_description">¿Que notas escribiremos hoy? </string>
+    <string name ="notes_list_description">Listado de Notas</string>
+
 </resources>
