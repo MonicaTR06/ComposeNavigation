@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">ComposeNavigation</string>
     <string name="task_title">Tareas</string>
-    <string name="menu_helper_description">" "</string>
-    <string name="create_task_helper_description">" "</string>
+    <string name="menu_helper_description">Botón menu</string>
+    <string name="create_task_helper_description">Botón nueva tarea</string>
+    <string name="save">Guardar</string>
+    <string name="network_message">No Internet connection</string>
+    <string name="unexpected_message">Ops algo salio mal, intentelo en unos minutos.</string>
+    <!--ADD TASK-->
+    <string name="title_work">Registro de Tareas</string>
+    <string name="u_work">Describa la tarea</string>
+    <string name="actual_date">Ingrese la fecha en el formato dd/mm/aaaa</string>
+    <string name="priority_now">Ingrese la prioridad: low or high</string>
+    <string name="saved_task">Tarea guardada</string>
+    <string name="clean_screen_Task">Cancelar</string>
+    <string name="open_close"> Abierto / Cerrado </string>
 </resources>

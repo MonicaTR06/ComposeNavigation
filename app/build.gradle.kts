@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -53,6 +52,11 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.gson)
+    implementation(libs.okhttp.interceptor)
+    implementation(libs.gson)
 
     implementation(projects.core.navigation)
     implementation(projects.core.ui)

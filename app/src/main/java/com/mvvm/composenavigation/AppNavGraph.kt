@@ -12,11 +12,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.demo.login.presentation.LoginScreen
-import com.mvvm.composenavigation.feature.task.list.TaskListScreen
+import com.demo.navigation.AddTaskRoute
 import com.demo.navigation.LoginRoute
-
-import com.demo.navigation.TaskListRoute
 import com.demo.navigation.Route
+import com.demo.navigation.TaskListRoute
+import com.mvvm.composenavigation.feature.task.list.TaskListScreen
+import com.mvvm.composenavigation.feature.task.add.presentation.AddTaskScreen
 import kotlinx.coroutines.launch
 
 @Composable
@@ -46,11 +47,12 @@ fun AppNavGraph(
                         }
                     },
                     onAddTask = {
-                        //navController.navigate(CreateListRoute)
+                       navController.navigate(AddTaskRoute)
                     }
                 )
             }
         }
+
         composable<LoginRoute> {
             ScreenWithDrawer(drawerState, currentRoute, navController::navigate) {
                 LoginScreen(
@@ -62,5 +64,10 @@ fun AppNavGraph(
                 )
             }
         }
+
+        composable<AddTaskRoute> {
+            AddTaskScreen()
+        }
     }
+
 }
