@@ -6,10 +6,11 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
+const val REMINDERS_ENDPOINT = "reminders"
+
 interface AppService {
-    @POST(value="reminders")
+    @POST(REMINDERS_ENDPOINT)
     suspend fun createReminder(
         @Body reminderRequest: ReminderRequest
     ): Response<ReminderResponse>
-
 }

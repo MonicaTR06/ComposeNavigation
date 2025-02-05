@@ -7,4 +7,8 @@
     <string name="create_reminder_helper_description">Botón nuevo reminder</string>
     <string name="network_message">No Internet connection</string>
     <string name="unexpected_message">Ops algo salio mal, intentelo en unos minutos.</string>
+    <string name="message">Message</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="reminder_list">Listado de reminder</string>
+    <string name="reminder_open">Is Reminder Open</string>
 </resources>

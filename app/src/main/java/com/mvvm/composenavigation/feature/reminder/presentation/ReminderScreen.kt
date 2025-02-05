@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.mvvm.composenavigation.R
 
 @Composable
 fun ReminderScreen(
@@ -44,7 +45,7 @@ fun ReminderScreen(
                 .padding(16.dp)
         ){
             Text(
-                text = "Message",
+                text = stringResource(id = R.string.message),
                 style = MaterialTheme.typography.labelLarge
             )
             TextField(
@@ -56,7 +57,7 @@ fun ReminderScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "Date and Time",
+                text = stringResource(id = R.string.date_and_time),
                 style = MaterialTheme.typography.labelLarge
             )
             TextField(
@@ -68,7 +69,7 @@ fun ReminderScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "Is Reminder Open",
+                text = stringResource(id = R.string.reminder_open),
                 style = MaterialTheme.typography.labelLarge
             )
             Row(
