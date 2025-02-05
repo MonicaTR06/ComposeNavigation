@@ -12,8 +12,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.demo.navigation.TaskListRoute
 import com.demo.navigation.Route
+import com.mvvm.composenavigation.navigation.ReminderListRoute
+import com.mvvm.composenavigation.navigation.TaskListRoute
 import kotlinx.coroutines.launch
 
 @Composable
@@ -57,6 +58,7 @@ fun ScreenWithDrawer(
                     },
                     selected = false,
                     onClick = {
+                        navigateTo(ReminderListRoute)
                         //Close drawer
                         coroutineScope.launch { drawerState.close() }
                     }

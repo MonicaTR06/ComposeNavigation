@@ -12,12 +12,16 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.demo.login.presentation.LoginScreen
-import com.demo.navigation.AddTaskRoute
-import com.demo.navigation.LoginRoute
 import com.demo.navigation.Route
-import com.demo.navigation.TaskListRoute
-import com.mvvm.composenavigation.feature.task.list.TaskListScreen
+import com.mvvm.composenavigation.feature.reminder.presentation.ReminderScreen
 import com.mvvm.composenavigation.feature.task.add.presentation.AddTaskScreen
+import com.mvvm.composenavigation.feature.task.list.ReminderListScreen
+import com.mvvm.composenavigation.feature.task.list.TaskListScreen
+import com.mvvm.composenavigation.navigation.AddTaskRoute
+import com.mvvm.composenavigation.navigation.LoginRoute
+import com.mvvm.composenavigation.navigation.ReminderListRoute
+import com.mvvm.composenavigation.navigation.ReminderScreenRoute
+import com.mvvm.composenavigation.navigation.TaskListRoute
 import kotlinx.coroutines.launch
 
 @Composable
@@ -51,22 +55,41 @@ fun AppNavGraph(
                     }
                 )
             }
-        }
 
-        composable<LoginRoute> {
-            ScreenWithDrawer(drawerState, currentRoute, navController::navigate) {
-                LoginScreen(
-                    onSuccessLogin = {
-                        navController.navigate(TaskListRoute) {
-                            popUpTo<LoginRoute> { inclusive = true }
+            composable<ReminderListRoute> {
+                ReminderListScreen(
+                    openDrawer = {
+                        coroutineScope.launch {
+                            drawerState.apply {
+                                if (isClosed) open() else close()
+                            }
                         }
+                    } ,
+                    onAddTask = {
+                        navController.navigate(ReminderScreenRoute)
                     }
                 )
             }
-        }
 
-        composable<AddTaskRoute> {
-            AddTaskScreen()
+            composable<ReminderScreenRoute> {
+                ReminderScreen()
+            }
+
+            composable<AddTaskRoute> {
+                AddTaskScreen()
+            }
+
+            composable<LoginRoute> {
+                ScreenWithDrawer(drawerState, currentRoute, navController::navigate) {
+                    LoginScreen(
+                        onSuccessLogin = {
+                            navController.navigate(TaskListRoute) {
+                                popUpTo<LoginRoute> { inclusive = true }
+                            }
+                        }
+                    )
+                }
+            }
         }
     }
 

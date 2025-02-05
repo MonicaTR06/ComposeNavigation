@@ -1,15 +1,20 @@
-package com.demo.navigation
+package com.mvvm.composenavigation.navigation
 
+import com.demo.navigation.Route
 import kotlinx.serialization.Serializable
 
 @Serializable
-data object RememberListRoute : Route
+data object ReminderListRoute : Route
 
 @Serializable
 data object NoteListRoute : Route
 
 @Serializable
 data object TaskListRoute : Route
+
+@Serializable
+data object ReminderScreenRoute : Route
+
 
 @Serializable
 data object AddTaskRoute : Route
