@@ -176,6 +176,10 @@ fun SendBtn(onClick: () -> Unit) {
         Text(text = "Guardar Nota")
     }
 }
+
+//DIALOG  CIRCULAR LOADER
+
+
 /*
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
