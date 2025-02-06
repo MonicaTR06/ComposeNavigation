@@ -16,6 +16,9 @@ androidxLifecycle = "2.8.6"
 retrofit = "2.11.0"
 okhttp3 = "4.12.0"
 gson = "2.11.0"
+appcompat = "1.6.1"
+material = "1.10.0"
+foundationLayoutAndroid = "1.7.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,6 +44,9 @@ retrofit2 = { group = "com.squareup.retrofit2", name = "retrofit", version.ref =
 retrofit2-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit"}
 okhttp-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp3"}
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson"}
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version.ref = "foundationLayoutAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -29,3 +29,4 @@ include(":core:navigation")
 
 include(":feature:login")
 include(":core:ui")
+include(":feature:notes")
