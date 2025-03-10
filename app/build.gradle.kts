@@ -60,6 +60,7 @@ dependencies {
 
     implementation(projects.core.navigation)
     implementation(projects.core.ui)
+    implementation(projects.core.network)
 
     implementation(projects.feature.login)
 

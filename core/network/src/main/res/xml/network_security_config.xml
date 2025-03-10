@@ -3,7 +3,7 @@
     <domain-config>
         <domain includeSubdomains="true">backend4app.onrender.com</domain>
         <trust-anchors>
-            <certificates src="@raw/onrender"/>
+            <certificates src="@raw/onrendercom"/>
         </trust-anchors>
     </domain-config>
 </network-security-config>
