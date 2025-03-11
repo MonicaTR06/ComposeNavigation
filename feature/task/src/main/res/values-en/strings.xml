@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">task</string>
+    <string name="title_work">Task Log</string>
+    <string name="u_work">Describe the task</string>
+    <string name="actual_date">Enter the date dd/mm/aaaa</string>
+    <string name="priority_now">Enter priority: low or high</string>
+    <string name="saved_task">Save task</string>
+    <string name="clean_screen_Task">Cancel</string>
+    <string name="open_close">Open/Close</string>
+    <string name="message">Message</string>
+    <string name="date_and_time">Date and time</string>
+    <string name="reminder_list">Reminder List</string>
+    <string name="reminder_open">Is Reminder Open</string>
+    <string name="task_title">Tasks</string>
+    <string name="menu_helper_description">Menu</string>
+    <string name="create_task_helper_description">New Task</string>
+    <string name="network_message">No internet connection</string>
+    <string name="unexpected_message">Oops something went wrong, try again in a few minutes.</string>
+    <string name="reminder_title">Reminder</string>
+    <string name="create_reminder_helper_description">New buttom</string>
+</resources>

@@ -22,7 +22,7 @@ object RetrofitInstance {
             .build()
     }
 
-    private val retrofit by lazy {
+    val retrofit:Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(client)
@@ -30,7 +30,7 @@ object RetrofitInstance {
             .build()
     }
 
-    val appService: AppService by lazy {
-        retrofit.create(AppService::class.java)
+    inline fun <reified T> createService(): T{
+        return retrofit.create(T::class.java)
     }
 }

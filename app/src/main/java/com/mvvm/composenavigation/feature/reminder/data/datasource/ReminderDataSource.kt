@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.flowOn
 import java.io.IOException
 
 class ReminderDataSource(
-    private val service: AppService = RetrofitInstance.appService,
+    private val service: AppService = RetrofitInstance.createService<AppService>(),
     private val gson: Gson = Gson()
 ) {
     fun createReminder(request: ReminderRequest): Flow<ServiceResult<ReminderResponse>> = flow {

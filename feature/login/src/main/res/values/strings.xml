@@ -12,4 +12,5 @@
     <string name="login_button">Entrar</string>
     <string name="network_message">No Internet connection</string>
     <string name="unexpected_message">Ops algo salio mal, intentelo en unos minutos.</string>
+
 </resources>
