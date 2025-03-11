@@ -1,4 +1,4 @@
-package com.mvvm.composenavigation.feature.reminder.data.request
+package com.example.reminder.data.datasource.remote.request
 
 data class ReminderRequest (
     val title: String,

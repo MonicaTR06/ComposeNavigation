@@ -1,4 +1,4 @@
-package com.mvvm.composenavigation.feature.reminder.presentation
+package com.example.reminder.presentation.ui
 
 data class ReminderUiState (
     val isLoading: Boolean = false,

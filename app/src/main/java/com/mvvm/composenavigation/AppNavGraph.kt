@@ -13,7 +13,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.demo.login.presentation.LoginScreen
 import com.demo.navigation.Route
-import com.mvvm.composenavigation.feature.reminder.presentation.ReminderScreen
+import com.example.reminder.presentation.ReminderScreen
 import com.mvvm.composenavigation.feature.task.add.presentation.AddTaskScreen
 import com.mvvm.composenavigation.feature.task.list.ReminderListScreen
 import com.mvvm.composenavigation.feature.task.list.TaskListScreen
