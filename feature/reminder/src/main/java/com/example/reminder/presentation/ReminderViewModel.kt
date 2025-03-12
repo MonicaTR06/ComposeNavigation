@@ -1,4 +1,4 @@
-package com.mvvm.composenavigation.feature.reminder.presentation
+package com.example.reminder.presentation
 
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
@@ -6,11 +6,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.mvvm.composenavigation.R
-import com.mvvm.composenavigation.feature.reminder.data.datasource.ReminderDataSource
-import com.mvvm.composenavigation.feature.reminder.data.request.ReminderRequest
-import com.mvvm.composenavigation.networking.model.ServiceError
-import com.mvvm.composenavigation.networking.model.ServiceResult
+import com.demo.network.domain.model.ServiceError
+import com.demo.network.domain.model.ServiceResult
+import com.example.reminder.R
+import com.example.reminder.data.datasource.remote.ReminderDataSource
+import com.example.reminder.data.datasource.remote.request.ReminderRequest
+import com.example.reminder.presentation.ui.ReminderUiAction
+import com.example.reminder.presentation.ui.ReminderUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
@@ -60,12 +62,12 @@ class ReminderViewModel (
                     _uiState.update { it.copy(isLoading = false) }
                 }
                 is ServiceResult.Error -> {
-                    when (result.serviceError) {
+                    when (val error = result.serviceError) {
                         ServiceError.NetworkError -> {
                             displayServiceErrorMessage(R.string.network_message)
                         }
                         is ServiceError.ServerError -> {
-                            displayServiceErrorMessage(result.serviceError.errorData.message)
+                            displayServiceErrorMessage(error.errorMessage.message)
                         }
                         ServiceError.Unexpected -> {
                             displayServiceErrorMessage(R.string.unexpected_message)

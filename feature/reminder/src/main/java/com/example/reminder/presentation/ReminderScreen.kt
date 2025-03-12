@@ -1,4 +1,4 @@
-package com.mvvm.composenavigation.feature.reminder.presentation
+package com.example.reminder.presentation
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box
@@ -17,17 +17,16 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.mvvm.composenavigation.R
+import com.example.reminder.R
+import com.example.reminder.presentation.ui.ReminderUiAction
 
 @Composable
 fun ReminderScreen(
