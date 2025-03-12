@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">task</string>
+    <string name="title_work">Registro de Tareas</string>
+    <string name="u_work">Describa la tarea</string>
+    <string name="actual_date">Ingrese la fecha en el formato dd/mm/aaaa</string>
+    <string name="priority_now">Ingrese la prioridad: baja or alta</string>
+    <string name="saved_task">Tarea guardada</string>
+    <string name="clean_screen_Task">Cancelar</string>
+    <string name="open_close"> Abierto / Cerrado </string>
+    <string name="message">Mensaje</string>
+    <string name="date_and_time">Fecha y hora</string>
+    <string name="reminder_list">Listado de reminder</string>
+    <string name="reminder_open">Is Reminder Open</string>
+    <string name="task_title">Tareas</string>
+    <string name="menu_helper_description">Botón menu</string>
+    <string name="create_task_helper_description">Botón nueva tarea</string>
+    <string name="network_message">No Internet connection</string>
+    <string name="unexpected_message">Ops algo salio mal, intentelo en unos minutos.</string>
+    <string name="reminder_title">Reminder</string>
+    <string name="create_reminder_helper_description">Botón nuevo reminder</string>
+</resources>

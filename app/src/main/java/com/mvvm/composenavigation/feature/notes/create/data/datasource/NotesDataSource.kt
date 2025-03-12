@@ -14,8 +14,9 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.io.IOException
 
+
 class NotesDataSource (
-    private val service: AppService = RetrofitInstance.appService,
+    private val service: AppService = RetrofitInstance.createService<AppService>(),
     private val gson: Gson = Gson()
 ){
 

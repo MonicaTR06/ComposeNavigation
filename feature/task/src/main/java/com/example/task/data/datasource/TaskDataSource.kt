@@ -1,37 +1,33 @@
-package com.example.reminder.data.datasource.remote
+package com.mvvm.composenavigation.feature.task.add.data.request
 
 import com.demo.network.data.mapper.toDomain
 import com.demo.network.data.model.ErrorResponse
 import com.demo.network.data.retrofit.RetrofitInstance
 import com.demo.network.domain.model.ServiceError
 import com.demo.network.domain.model.ServiceResult
-import com.example.reminder.data.datasource.remote.request.ReminderRequest
-import com.example.reminder.data.datasource.remote.response.ReminderResponse
-import com.example.reminder.data.datasource.remote.service.ReminderService
+import com.example.task.data.datasource.remote.request.TaskRequest
+import com.example.task.data.datasource.remote.response.TaskResponse
+import com.example.task.data.datasource.remote.service.TaskService
+import com.example.task.domain.model.Task
 import com.google.gson.Gson
-import com.mvvm.composenavigation.feature.reminder.data.request.ReminderRequest
-import com.mvvm.composenavigation.feature.reminder.data.response.ReminderResponse
-import com.mvvm.composenavigation.networking.AppService
-import com.mvvm.composenavigation.networking.RetrofitInstance
-import com.mvvm.composenavigation.networking.model.ErrorResponse
-import com.mvvm.composenavigation.networking.model.ServiceError
-import com.mvvm.composenavigation.networking.model.ServiceResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.io.IOException
 
-class ReminderDataSource(
-    private val service: ReminderService = RetrofitInstance.createService<ReminderService>(),
+class TaskDataSource(
+    private val taskService: TaskService = RetrofitInstance.createService<TaskService>(),
     private val gson: Gson = Gson()
 ) {
-    fun createReminder(request: ReminderRequest): Flow<ServiceResult<ReminderResponse>> = flow {
+    fun createTask(
+        request: Task
+    ): Flow<ServiceResult<TaskResponse>> = flow {
         try {
-            val response = service.createReminder(request)
+            val response = taskService.saveTasks(TaskRequest())
             if (response.isSuccessful) {
-                val reminderResponse = response.body() as ReminderResponse
-                emit(ServiceResult.Success(reminderResponse))
+                val taskResponse = response.body() as TaskResponse
+                emit(ServiceResult.Success(taskResponse))
             } else {
                 when (response.code()) {
                     500 -> {

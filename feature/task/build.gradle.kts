@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.demo.login"
+    namespace = "com.demo.task"
     compileSdk = 35
 
     defaultConfig {
@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.okhttp.interceptor)
 
     implementation(projects.core.network)
+    implementation(projects.core.navigation)
     implementation(projects.core.ui)
 
     testImplementation(libs.junit)
