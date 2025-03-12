@@ -1,4 +1,4 @@
-package com.mvvm.composenavigation.feature.task.add.presentation
+package com.example.task.presentation.create
 
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -44,15 +44,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.demo.task.R
 import com.demo.ui.theme.ComposeNavigationTheme
 import com.demo.ui.tooling.DevicePreviews
-import com.example.task.presentation.TaskViewModel
-import com.example.task.presentation.ui.TaskUiAction
-import com.mvvm.composenavigation.feature.task.add.presentation.TaskConstants.HIGH
-import com.mvvm.composenavigation.feature.task.add.presentation.TaskConstants.LOW
+import com.example.task.presentation.create.ui.TaskUiAction
+import com.example.task.presentation.create.TaskConstants.HIGH
+import com.example.task.presentation.create.TaskConstants.LOW
 
 @Preview
 @Composable
 fun AddTaskScreen(
-    viewModel: TaskViewModel = viewModel(factory = TaskViewModel.Factory)
+    viewModel: TaskViewModel = viewModel(factory = TaskViewModel.Factory),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current

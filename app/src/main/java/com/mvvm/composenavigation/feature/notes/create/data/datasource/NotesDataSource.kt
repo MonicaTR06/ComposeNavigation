@@ -8,6 +8,8 @@ import com.mvvm.composenavigation.networking.model.ServiceResult
 import com.mvvm.composenavigation.networking.model.ErrorResponse
 import com.google.gson.Gson
 import com.mvvm.composenavigation.feature.notes.create.data.response.CreateNoteResponse
+import com.mvvm.composenavigation.feature.notes.create.data.response.NoteResponse
+import com.mvvm.composenavigation.feature.notes.create.data.response.NotesResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -45,5 +47,29 @@ class NotesDataSource (
         }
     }.flowOn(Dispatchers.IO)
 
+    fun getNotes(): Flow<ServiceResult<NotesResponse>> = flow{
+        try {
+            val response = service.getNotes()
+            if (response.isSuccessful) {
+                val responseList = response.body() as List<NoteResponse>
+                emit(ServiceResult.Success(NotesResponse(responseList)))
+            } else {
+                when (response.code()) {
+                    500 -> {
+                        val body = response.errorBody()?.string()
+                        val errorResponse = gson.fromJson(body, ErrorResponse::class.java)
+                        emit(ServiceResult.Error(ServiceError.ServerError(errorResponse)))
+                    }
+                    else -> {
+                        emit(ServiceResult.Error(ServiceError.Unexpected))
+                    }
+                }
+            }
+        }catch (ex: IOException) {
+            emit(ServiceResult.Error(ServiceError.NetworkError))
+        } catch (ex: Exception) {
+            emit(ServiceResult.Error(ServiceError.Unexpected))
+        }
+    }.flowOn(Dispatchers.IO)
 
 }
