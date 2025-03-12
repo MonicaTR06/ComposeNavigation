@@ -28,5 +28,6 @@ include(":core:network")
 include(":core:navigation")
 
 include(":feature:login")
+include(":feature:reminder")
 include(":core:ui")
 include(":feature:task")

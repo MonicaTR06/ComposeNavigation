@@ -63,6 +63,7 @@ dependencies {
     implementation(projects.core.network)
 
     implementation(projects.feature.login)
+    implementation(projects.feature.reminder)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

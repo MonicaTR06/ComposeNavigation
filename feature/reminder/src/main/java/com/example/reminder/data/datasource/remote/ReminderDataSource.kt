@@ -1,5 +1,13 @@
-package com.mvvm.composenavigation.feature.reminder.data.datasource
+package com.example.reminder.data.datasource.remote
 
+import com.demo.network.data.mapper.toDomain
+import com.demo.network.data.model.ErrorResponse
+import com.demo.network.data.retrofit.RetrofitInstance
+import com.demo.network.domain.model.ServiceError
+import com.demo.network.domain.model.ServiceResult
+import com.example.reminder.data.datasource.remote.request.ReminderRequest
+import com.example.reminder.data.datasource.remote.response.ReminderResponse
+import com.example.reminder.data.datasource.remote.service.ReminderService
 import com.google.gson.Gson
 import com.mvvm.composenavigation.feature.reminder.data.request.ReminderRequest
 import com.mvvm.composenavigation.feature.reminder.data.response.ReminderResponse
@@ -15,7 +23,7 @@ import kotlinx.coroutines.flow.flowOn
 import java.io.IOException
 
 class ReminderDataSource(
-    private val service: AppService = RetrofitInstance.createService<AppService>(),
+    private val service: ReminderService = RetrofitInstance.createService<ReminderService>(),
     private val gson: Gson = Gson()
 ) {
     fun createReminder(request: ReminderRequest): Flow<ServiceResult<ReminderResponse>> = flow {
@@ -29,7 +37,7 @@ class ReminderDataSource(
                     500 -> {
                         val body = response.errorBody()?.string()
                         val errorResponse = gson.fromJson(body, ErrorResponse::class.java)
-                        emit(ServiceResult.Error(ServiceError.ServerError(errorResponse)))
+                        emit(ServiceResult.Error(ServiceError.ServerError(errorResponse.toDomain())))
                     }
 
                     else -> {

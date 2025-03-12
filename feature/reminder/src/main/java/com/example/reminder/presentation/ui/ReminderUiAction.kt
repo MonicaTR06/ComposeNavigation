@@ -1,4 +1,4 @@
-package com.mvvm.composenavigation.feature.reminder.presentation
+package com.example.reminder.presentation.ui
 
 sealed class ReminderUiAction {
     data class OnMessageChanged(val title: String) : ReminderUiAction()
