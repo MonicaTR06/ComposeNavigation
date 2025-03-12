@@ -9,13 +9,6 @@ import com.example.reminder.data.datasource.remote.request.ReminderRequest
 import com.example.reminder.data.datasource.remote.response.ReminderResponse
 import com.example.reminder.data.datasource.remote.service.ReminderService
 import com.google.gson.Gson
-import com.mvvm.composenavigation.feature.reminder.data.request.ReminderRequest
-import com.mvvm.composenavigation.feature.reminder.data.response.ReminderResponse
-import com.mvvm.composenavigation.networking.AppService
-import com.mvvm.composenavigation.networking.RetrofitInstance
-import com.mvvm.composenavigation.networking.model.ErrorResponse
-import com.mvvm.composenavigation.networking.model.ServiceError
-import com.mvvm.composenavigation.networking.model.ServiceResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
