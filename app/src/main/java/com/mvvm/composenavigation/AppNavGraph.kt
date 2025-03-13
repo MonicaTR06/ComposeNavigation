@@ -15,7 +15,7 @@ import com.demo.login.presentation.LoginScreen
 import com.demo.navigation.Route
 import com.example.reminder.presentation.ReminderScreen
 import com.mvvm.composenavigation.feature.task.add.presentation.AddTaskScreen
-import com.mvvm.composenavigation.feature.task.list.ReminderListScreen
+import com.example.reminder.list.ReminderListScreen
 import com.mvvm.composenavigation.feature.task.list.TaskListScreen
 import com.mvvm.composenavigation.navigation.AddTaskRoute
 import com.mvvm.composenavigation.navigation.LoginRoute
