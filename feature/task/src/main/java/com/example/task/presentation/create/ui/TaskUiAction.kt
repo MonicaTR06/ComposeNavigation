@@ -1,4 +1,4 @@
-package com.example.task.presentation.ui
+package com.example.task.presentation.create.ui
 
 sealed class TaskUiAction {
     data class OnTitleChanged(val title: String): TaskUiAction()

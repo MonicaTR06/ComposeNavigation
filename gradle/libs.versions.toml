@@ -17,6 +17,8 @@ retrofit = "2.11.0"
 okhttp3 = "4.12.0"
 gson = "2.11.0"
 lifecycleRuntimeComposeAndroid = "2.8.7"
+uiGraphicsAndroid = "1.6.6"
+uiTextAndroid = "1.6.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -43,6 +45,8 @@ retrofit2-gson = { group = "com.squareup.retrofit2", name = "converter-gson", ve
 okhttp-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp3"}
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson"}
 androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
+androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version.ref = "uiGraphicsAndroid" }
+androidx-ui-text-android = { group = "androidx.compose.ui", name = "ui-text-android", version.ref = "uiTextAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

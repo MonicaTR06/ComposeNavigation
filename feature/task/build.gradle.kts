@@ -47,6 +47,9 @@ dependencies {
     implementation(projects.core.navigation)
     implementation(projects.core.ui)
 
+    implementation(libs.androidx.ui.graphics.android)
+    implementation(libs.androidx.ui.text.android)
+
     testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)

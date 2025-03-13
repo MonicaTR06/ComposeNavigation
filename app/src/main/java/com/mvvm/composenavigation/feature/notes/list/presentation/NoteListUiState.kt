@@ -5,5 +5,5 @@ import com.mvvm.composenavigation.feature.notes.create.data.response.NoteRespons
 data class NoteListUiState(
     val isLoading: Boolean = false,
     val displayErrorMessage: Boolean = false,
-    val notes: List<NoteResponse> = arrayListOf(),
+    val notes: List<NoteResponse> = arrayListOf()
 )

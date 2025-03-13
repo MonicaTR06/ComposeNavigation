@@ -1,7 +1,9 @@
 package com.mvvm.composenavigation.networking
 
+import com.example.task.data.datasource.remote.request.CreateTaskRequest
 import com.example.task.data.datasource.remote.request.TaskRequest
-import com.example.task.data.datasource.remote.response.TaskResponse
+import com.example.task.data.datasource.remote.response.CreateTaskResponse
+import com.example.task.data.datasource.remote.response.SaveTaskResponse
 import com.mvvm.composenavigation.feature.notes.create.data.request.CreateNoteRequest
 import com.mvvm.composenavigation.feature.notes.create.data.response.CreateNoteResponse
 import com.mvvm.composenavigation.feature.notes.create.data.response.NoteResponse
@@ -17,7 +19,15 @@ interface AppService {
     @POST(value = SAVE_TASK_URL)
     suspend fun saveTasks(
         @Body request: TaskRequest,
-    ): Response<TaskResponse>
+    ): Response<SaveTaskResponse>
+
+    @GET(value = "tasks")
+    suspend fun getTasks(): Response<List<SaveTaskResponse>>
+
+    @POST(value = SAVE_TASK_URL)
+    suspend fun createTasks(
+        @Body createTaskRequest: CreateTaskRequest,
+    ): Response<CreateTaskResponse>
 
     @GET(value = "notes")
     suspend fun getNotes(): Response<List<NoteResponse>>
