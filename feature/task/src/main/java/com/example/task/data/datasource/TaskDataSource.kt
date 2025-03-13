@@ -5,6 +5,7 @@ import com.demo.network.data.model.ErrorResponse
 import com.demo.network.data.retrofit.RetrofitInstance
 import com.demo.network.domain.model.ServiceError
 import com.demo.network.domain.model.ServiceResult
+import com.example.task.data.datasource.remote.mapper.toData
 import com.example.task.data.datasource.remote.request.TaskRequest
 import com.example.task.data.datasource.remote.response.SaveTaskResponse
 import com.example.task.data.datasource.remote.response.TaskItemResponse
@@ -23,10 +24,10 @@ class TaskDataSource(
     private val gson: Gson = Gson()
 ) {
     fun createTask(
-        request: Task
+        task: Task
     ): Flow<ServiceResult<SaveTaskResponse>> = flow {
         try {
-            val response = taskService.saveTasks(TaskRequest())
+            val response = taskService.saveTasks(task.toData())
             if (response.isSuccessful) {
                 val saveTaskResponse = response.body() as SaveTaskResponse
                 emit(ServiceResult.Success(saveTaskResponse))
