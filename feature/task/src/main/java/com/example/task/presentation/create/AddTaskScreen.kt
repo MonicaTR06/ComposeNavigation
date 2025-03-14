@@ -13,18 +13,23 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -44,35 +49,63 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.demo.task.R
 import com.demo.ui.theme.ComposeNavigationTheme
 import com.demo.ui.tooling.DevicePreviews
-import com.example.task.presentation.create.ui.TaskUiAction
 import com.example.task.presentation.create.TaskConstants.HIGH
 import com.example.task.presentation.create.TaskConstants.LOW
+import com.example.task.presentation.create.ui.TaskUiAction
 
-@Preview
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddTaskScreen(
     viewModel: TaskViewModel = viewModel(factory = TaskViewModel.Factory),
+    onBack:() -> Unit
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val context = LocalContext.current
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = stringResource(R.string.task_title))
+                },
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.menu_helper_description)
+                        )
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+    ) { contentPadding ->
+        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+        val context = LocalContext.current
 
-    if (uiState.errorMessage != null || uiState.errorMessageRes != null) {
-        val message = uiState.errorMessage ?: uiState.errorMessageRes?.let { stringResource(it) }
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-        viewModel.serviceErrorShown()
-    }
-    if (uiState.isSave) {
-        Toast.makeText(context, R.string.saved_task, Toast.LENGTH_SHORT).show()
-        viewModel.taskMessageShow()
-    }
+        if (uiState.errorMessage != null || uiState.errorMessageRes != null) {
+            val message =
+                uiState.errorMessage ?: uiState.errorMessageRes?.let { stringResource(it) }
+            Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+            viewModel.serviceErrorShown()
+        }
+        if (uiState.isSave) {
+            Toast.makeText(context, R.string.saved_task, Toast.LENGTH_SHORT).show()
+            viewModel.taskMessageShow()
+        }
+        Box(
+            Modifier
+                .fillMaxSize()
+                .padding(contentPadding)
+                .padding(16.dp)
+        ){
+            AddTaskScreen(
+                isLoading = uiState.isLoading,
+                title = uiState.title,
+                priority = uiState.priority,
+                isTaskOpen = uiState.isTaskOpen,
+                onUiAction = viewModel::onUiAction
+            )
+        }
 
-    AddTaskScreen(
-        isLoading = uiState.isLoading,
-        title = uiState.title,
-        priority = uiState.priority,
-        isTaskOpen = uiState.isTaskOpen,
-        onUiAction = viewModel::onUiAction
-    )
+    }
 }
 
 @Composable
@@ -187,7 +220,7 @@ fun SwitchMinimalExample(onUiAction: (TaskUiAction) -> Unit, checked: Boolean) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PriorityDropdownMenu(onUiAction: (TaskUiAction) -> Unit, selectedText: String) {
-    val priority = arrayOf(HIGH,LOW)
+    val priority = arrayOf(HIGH, LOW)
     var expanded by remember { mutableStateOf(false) }
 
     Box(

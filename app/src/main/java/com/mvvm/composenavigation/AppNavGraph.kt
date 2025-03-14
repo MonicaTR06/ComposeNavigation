@@ -63,7 +63,11 @@ fun AppNavGraph(
         }
 
         composable<AddTaskRoute> {
-            AddTaskScreen()
+            AddTaskScreen(
+                onBack = {
+                    navController.navigateUp()
+                }
+            )
         }
 
         composable<ReminderListRoute> {
