@@ -46,7 +46,6 @@ fun CreateNotesScreen(
     onBack: () -> Unit
 ) {
     Scaffold(
-
         topBar = {
             TopAppBar(
                 title = {

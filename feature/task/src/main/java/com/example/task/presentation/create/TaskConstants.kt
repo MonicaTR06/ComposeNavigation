@@ -1,4 +1,4 @@
-package com.mvvm.composenavigation.feature.task.add.presentation
+package com.example.task.presentation.create
 
 object TaskConstants {
     const val HIGH = "HIGH"

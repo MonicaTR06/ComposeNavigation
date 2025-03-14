@@ -14,18 +14,18 @@ import androidx.navigation.compose.rememberNavController
 import com.demo.login.presentation.LoginScreen
 import com.demo.navigation.Route
 import com.example.reminder.presentation.ReminderScreen
-import com.mvvm.composenavigation.feature.task.add.presentation.AddTaskScreen
+import com.example.task.presentation.create.AddTaskScreen
+import com.example.task.presentation.list.TaskListScreen
+import com.mvvm.composenavigation.feature.notes.create.presentation.CreateNotesScreen
+import com.mvvm.composenavigation.feature.notes.list.presentation.NotesListScreen
 import com.mvvm.composenavigation.feature.task.list.ReminderListScreen
-import com.mvvm.composenavigation.feature.task.list.TaskListScreen
 import com.mvvm.composenavigation.navigation.AddTaskRoute
+import com.mvvm.composenavigation.navigation.CreateNoteRoute
 import com.mvvm.composenavigation.navigation.LoginRoute
+import com.mvvm.composenavigation.navigation.NoteListRoute
 import com.mvvm.composenavigation.navigation.ReminderListRoute
 import com.mvvm.composenavigation.navigation.ReminderScreenRoute
-import com.mvvm.composenavigation.feature.notes.list.presentation.NotesListScreen
-import com.mvvm.composenavigation.feature.notes.create.presentation.CreateNotesScreen
-import com.mvvm.composenavigation.navigation.CreateNoteRoute
 import com.mvvm.composenavigation.navigation.TaskListRoute
-import com.mvvm.composenavigation.navigation.NoteListRoute
 import kotlinx.coroutines.launch
 
 @Composable
@@ -62,6 +62,14 @@ fun AppNavGraph(
             }
         }
 
+        composable<AddTaskRoute> {
+            AddTaskScreen(
+                onBack = {
+                    navController.navigateUp()
+                }
+            )
+        }
+
         composable<ReminderListRoute> {
             ScreenWithDrawer(drawerState, currentRoute, navController::navigate) {
                 ReminderListScreen(
@@ -81,12 +89,7 @@ fun AppNavGraph(
 
         composable<ReminderScreenRoute> {
             ReminderScreen(
-
             )
-        }
-
-        composable<AddTaskRoute> {
-            AddTaskScreen()
         }
 
         composable<LoginRoute> {

@@ -1,4 +1,4 @@
-package com.example.task.presentation
+package com.example.task.presentation.create
 
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
@@ -9,8 +9,8 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.demo.network.domain.model.ServiceError
 import com.demo.network.domain.model.ServiceResult
 import com.demo.task.R
-import com.example.task.presentation.ui.TaskUiAction
-import com.example.task.presentation.ui.TaskUiState
+import com.example.task.presentation.create.ui.TaskUiAction
+import com.example.task.presentation.create.ui.TaskUiState
 import com.mvvm.composenavigation.feature.task.add.data.request.TaskDataSource
 import com.example.task.domain.model.Task
 import kotlinx.coroutines.flow.MutableStateFlow
